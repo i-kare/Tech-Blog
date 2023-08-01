@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
-const sequelize = require('../config/connection');
-const dayjs = require('dayjs');
+//const sequelize = require('../config/connections');
+//const dayjs = require('dayjs');
 
 //Step 1) Users
 router.get('/', withAuth, async (req, res) => {  //this is the initial page that loads. This homeroute is looking for authentication
@@ -73,7 +73,7 @@ router.get('/post/:id', withAuth, async (req, res) => { //getting post by id and
 router.get('/login', (req, res) => {
    // If the user is already logged in, redirect the request to another route
    if (req.session.logged_in) {
-     res.redirect('/');
+     res.redirect('/dashboard');
      return;
    }
    res.render('login');
@@ -81,11 +81,11 @@ router.get('/login', (req, res) => {
 router.get('/', (req, res) => {
        // If the user is already logged in, redirect the request to another route
        if (req.session.logged_in) {
-         res.redirect('/');
+         res.redirect('/dashboard');
       return;
        }
     
-       res.render('main');
+       res.render('signup');
     });
 //Render the profile
 router.get('/profile', withAuth, async (req, res) => {

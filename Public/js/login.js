@@ -3,10 +3,10 @@ $(function() {
       event.preventDefault();
   
       // Collect values from the login form
-      const name = document.querySelector('#name-login').value.trim();        *TO_DO:update to username DONE
+      const name = document.querySelector('#name-login').value.trim();       
       const password = document.querySelector('#password-login').value.trim();
   
-      if (name && password) {          *TO_DO:update to username
+      if (name && password) {         
         // Send a POST request to the API endpoint
         const response = await fetch('/api/users/login', {
           method: 'POST',
@@ -26,10 +26,10 @@ $(function() {
     const signupFormHandler = async (event) => {
       event.preventDefault();
   
-      const name = document.querySelector('#name-signup').value.trim();         *TO_DO:update name to username : DONE
+      const name = document.querySelector('#name-signup').value.trim();         
       const password = document.querySelector('#password-signup').value.trim();
   
-      if (name && password) {                                  *TO_DO:update name to username  *TO_DO: delete email: DONE
+      if (name && password) {                                  
         const response = await fetch('/api/users', {
           method: 'POST',
           body: JSON.stringify({ name, password }),
