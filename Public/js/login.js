@@ -1,0 +1,57 @@
+$(function() {
+    const loginFormHandler = async (event) => {
+      event.preventDefault();
+  
+      // Collect values from the login form
+      const name = document.querySelector('#name-login').value.trim();        *TO_DO:update to username DONE
+      const password = document.querySelector('#password-login').value.trim();
+  
+      if (name && password) {          *TO_DO:update to username
+        // Send a POST request to the API endpoint
+        const response = await fetch('/api/users/login', {
+          method: 'POST',
+          body: JSON.stringify({ name, password }),
+          headers: { 'Content-Type': 'application/json' },
+        });
+  
+        if (response.ok) {
+          // If successful, redirect the browser to the profile page
+          document.location.replace('/profile');
+        } else {
+          alert(response.statusText);
+        }
+      }
+    };
+  
+    const signupFormHandler = async (event) => {
+      event.preventDefault();
+  
+      const name = document.querySelector('#name-signup').value.trim();         *TO_DO:update name to username : DONE
+      const password = document.querySelector('#password-signup').value.trim();
+  
+      if (name && password) {                                  *TO_DO:update name to username  *TO_DO: delete email: DONE
+        const response = await fetch('/api/users', {
+          method: 'POST',
+          body: JSON.stringify({ name, password }),
+          headers: { 'Content-Type': 'application/json' },
+        });
+  
+        if (response.ok) {
+          document.location.replace('/profile');
+        } else {
+          alert(response.statusText);
+        }
+      }
+    };
+  
+    const showSignupForm = async(e) =>{
+      e.preventDefault();
+  
+      $(".signupButton").hide();
+      $(".signupPage").show();
+    }
+  
+    $( ".login-form" ).on( "submit", loginFormHandler)
+    $( ".signup-form" ).on( "submit", signupFormHandler)
+    $(".signupButton").click(showSignupForm)
+  });
