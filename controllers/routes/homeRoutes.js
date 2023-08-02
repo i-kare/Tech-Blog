@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
-//const sequelize = require('../config/connections');
+const sequelize = require('../config/connections');
 //const dayjs = require('dayjs');
 
 //Step 1) Users
@@ -13,7 +13,11 @@ router.get('/', withAuth, async (req, res) => {  //this is the initial page that
        attributes: { exclude: ['password'] },
          include: [{ model:'name'}], //we're joining user with name 
      });
-   const postData = await Post.findAll({ //GET all 'User' for the homepage
+
+
+
+
+   const postData = await Post.findAll({ //GET all 'User' for the homepage //all users or posts for homepage? 
        where: {
         date_added: dayjs().format('MM/DD/YYYY'),
         user_id: req.session.user_id,
@@ -26,18 +30,12 @@ router.get('/', withAuth, async (req, res) => {  //this is the initial page that
        ],
      });
 
-//     const totalCarbs = await Food.sum('carbs', {
-//       where: {
-//         date_added: dayjs().format('MM/DD/YYYY'), //can I use this somehow to add date to posts???
-//         user_id: req.session.user_id,
-//       },
-//     });
-//     //const totals = totalData.get({ plain: true });
+
      
 const posts = postData.map((post) => post.get({ plain: true }));  //were serializing 'post' data 
 const user = userData.get({ plain: true }); //// We use .get({ plain: true }) on the object to serialize it so that it only includes the data that we need.  
 ///calling get fxn on 'userData'. calling the get fxn on 'user Data' will allow us to serialize the data. 
-     res.render('profile', { //the 'profile' template is rendered and the following is passed into the template
+     res.render('profile', { //the 'profile' template (i.e handlabar?) is rendered and the following is passed into the template
           posts,
        ...user,
        logged_in: true,
@@ -46,6 +44,9 @@ const user = userData.get({ plain: true }); //// We use .get({ plain: true }) on
     res.status(500).json(err);
    }
 });
+
+
+
 
 //Step2) Mostly Posts
 router.get('/post/:id', withAuth, async (req, res) => { //getting post by id and authenticating
@@ -60,7 +61,7 @@ router.get('/post/:id', withAuth, async (req, res) => { //getting post by id and
        ],
      });
      const post = postData.get({ plain: true }); //Calling the GET fxn to get the data back then serialize the information about the data.  We use .get({ plain: true }) on the object to serialize it so that it only includes the data that we need. 
-     res.render('post', {//Sending the 'post' information to out handlebar i.e rendering to out 'post' handlebar
+     res.render('post', {//Sending the 'post' information to our handlebar i.e rendering to our 'post' handlebar
        ...post,
        logged_in: req.session.logged_in,
      });

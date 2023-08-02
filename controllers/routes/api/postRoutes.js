@@ -1,8 +1,14 @@
 const router = require('express').Router();
-const { Post } = require('../../../models');
-const withAuth = require('../../../utils/auth');
-const dayjs = require('dayjs');
+const { Post } = require('../../models');
+const withAuth = require('../../utils/auth');
 
+            const dayjs = require('dayjs');
+
+
+//CRUD!!!!!! for Posts
+
+
+//Create
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
@@ -17,6 +23,12 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+//Update
+
+??
+
+
+//Delete
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({
