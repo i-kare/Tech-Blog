@@ -1,12 +1,12 @@
 const path = require('path');
 const express = require('express');
-//const session = require('express-session');
+const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers/routes');
 const helpers = require('./utils/helpers');
 
-const sequelize = require('./config/connections'); //do i NOT need this file?
-//const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const sequelize = require('./config/connections'); 
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({ helpers });
 
  const sess = {
-   secret: 'Super secret secret',
+   secret: 'Tech blog secret',
    cookie: {
      maxAge: 300000,
      httpOnly: true,
