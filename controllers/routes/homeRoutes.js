@@ -9,23 +9,25 @@ router.get('/', withAuth, async (req, res) => {  //this is the initial page that
    try {
 
 //Below we will: Find the logged in user based on the session ID; in other words search that database for a 'user' with an id that matches the foloowing parameters. 
-  const userData = await User.findByPk(req.session.user_id, { //First, we'll load up the 'users' and fetch the data by primary key a.k.a PK
-       attributes: { exclude: ['password'] },
-         include: [{ model:'name'}], //we're joining user with name 
+  const userData = await User.findByPk(req.session.user_id, { //First, we're loading up the 'users', and we're fetching the data by primary key a.k.a PK
+       
+    attributes: { exclude: ['password'] }, //why exclude the password???
+        
+    include: [{ model:Post}], //we're joining the specific user with respective 'Post'
      });
 
 
 
 
-   const postData = await Post.findAll({ //GET all 'User' for the homepage //all users or posts for homepage? 
+   const postData = await Post.findAll({ //GET all 'Post' for the homepage 
        where: {
         date_added: dayjs().format('MM/DD/YYYY'),
         user_id: req.session.user_id,
        },
       include: [
         {
-          model: User, //We're including 'user'
-          attributes: ['name'],
+          model: User, //we're joining the posts with 'User'. In other words, were including 'user' for each post
+          //attributes: ['name'], //Do we need this? I don't think so. 
         },
        ],
      });
@@ -35,7 +37,8 @@ router.get('/', withAuth, async (req, res) => {  //this is the initial page that
 const posts = postData.map((post) => post.get({ plain: true }));  //were serializing 'post' data 
 const user = userData.get({ plain: true }); //// We use .get({ plain: true }) on the object to serialize it so that it only includes the data that we need.  
 ///calling get fxn on 'userData'. calling the get fxn on 'user Data' will allow us to serialize the data. 
-     res.render('profile', { //the 'profile' template (i.e handlabar?) is rendered and the following is passed into the template
+     res.render('dashboard', { // when were rending were passing the list of 'posts' to our 'dashboard' page handlebar
+                              //In other words: the 'dashboard' template (i.e handlabar) is rendered, then  following is passed into the template
           posts,
        ...user,
        logged_in: true,
@@ -48,20 +51,21 @@ const user = userData.get({ plain: true }); //// We use .get({ plain: true }) on
 
 
 
-//Step2) Mostly Posts
+//Step2) //Get a individual post and it's respective user
 router.get('/post/:id', withAuth, async (req, res) => { //getting post by id and authenticating
    try { //using sql database we search the database for a 'post' with an id that matches the params below
      console.log(req.params.id);
-     const postData = await Post.findByPk(req.params.id, { //we load posts and fetch data by primary key. We use sequelize to find posts
-       include: [ //we're joining the specific posts with it's respective 'user'
+     const postData = await Post.findByPk(req.params.id, { 
+      //we load posts and fetch data by primary key. 
+       include: [ //we're joining the specific posts with 'user'.  In other words, were including 'user' for each post
          {
            model: User,
-           attributes: ['name'],
+           //attributes: ['name'],
          },
        ],
      });
      const post = postData.get({ plain: true }); //Calling the GET fxn to get the data back then serialize the information about the data.  We use .get({ plain: true }) on the object to serialize it so that it only includes the data that we need. 
-     res.render('post', {//Sending the 'post' information to our handlebar i.e rendering to our 'post' handlebar
+     res.render('dashboard', {//Sending the 'post' information to our handlebar i.e rendering to our 'dashbooard' handlebar
        ...post,
        logged_in: req.session.logged_in,
      });

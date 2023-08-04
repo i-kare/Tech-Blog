@@ -25,7 +25,25 @@ router.post('/', withAuth, async (req, res) => {
 
 //Update
 
-??
+router.put('/:id', withAuth, async (req, res) => {
+  //update comments by 'id' value
+  try {
+    const [chosenPosts] = await Post.update({
+      where:{
+        id: id.req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
+    if (!chosenPosts) {
+      res.status(404).json({ message: 'No post(s) updated with this id!' });
+      return;
+    }
+    res.status(200).json.end();
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 
 //Delete
