@@ -26,8 +26,7 @@ $(function() {
         $(".signupButton").hide();
         $(".signupPage").show();
       }
-    
-      $( ".login-form" ).on( "submit", loginFormHandler)
+      
       $( ".signup-form" ).on( "submit", signupFormHandler)
       $(".signupButton").click(showSignupForm)
     });
