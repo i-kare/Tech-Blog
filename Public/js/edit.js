@@ -1,4 +1,7 @@
 $(function() {
+    const postId = document.querySelector('input[name="post-Id"]').value;
+    console.log(postId)
+
     const editFormHandler = async (event) => {
         event.preventDefault();
     
@@ -21,14 +24,13 @@ $(function() {
         document.location.replace('/dashboard');
       };
     
-      const showSignupForm = async(e) =>{
-        e.preventDefault();
+    const deleteClickHandler = async(e) => {
+        await fetch('/api/post/${postId}', {
+            method: 'DELETE'
+        });
+        document.location.replace('/dashboard');
+    };
     
-        $(".signupButton").hide();
-        $(".signupPage").show();
-      }
-    
-      $( ".edit-form" ).on( "submit", editFormHandler)
-      $( ".signup-form" ).on( "submit", signupFormHandler)
-      $(".signupButton").click(showSignupForm)
+      $( "#delete-btn" ).on( "click", deleteClickHandler)
+      $( "#edit-form" ).on( "submit", editFormHandler)
     });
