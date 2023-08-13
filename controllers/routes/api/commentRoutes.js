@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const {Comment} = require ('../../models'); 
-const withAuth = require('../../utils/auth');
+const {Comment} = require ('../../../models'); 
+const withAuth = require('../../../utils/auth');
 
 //Step1) 
 router.get('/', withAuth, async (req, res) => {  //this is the initial comment that loads. This Comment-route is also looking for authentication
@@ -33,7 +33,7 @@ logged_in:true,
 
 
 //Create Comment
-router.comment('/', withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
       const newcommentData = await Comment.create({
           username:req.body.username,
