@@ -8,7 +8,7 @@ $(function() {
         const postName = document.querySelector('input[name="post-title"]').value;         
         const postInformation = document.querySelector('textarea[name="post-body"]').value;
     
-        if (username && password) {                                  
+        if (postInformation) {                                  
           const response = await fetch('/api/post/${postId}', {
             method: 'PUT',
             body: JSON.stringify({ postName, postInformation }),
