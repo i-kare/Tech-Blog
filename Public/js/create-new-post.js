@@ -3,15 +3,15 @@ $(function() {
     console.log(postId)
 
 
-    const create_new_postFormHandler = async (event) => {
+    const commentingFormHandler = async (event) => {
         event.preventDefault();
     
-        const create_new_postInformation= document.querySelector('textarea[name="create_new_post-body"]').value;         
+        const commentingInformation= document.querySelector('textarea[name="commenting-body"]').value;         
 
-        if (create_new_postInformation) {                                  
+        if (commentingInformation) {                                  
           const response = await fetch('/api/comment', {
             method: 'POST',
-            body: JSON.stringify({ create_new_postInformation, postId }),
+            body: JSON.stringify({ commentingInformation, postId }),
             headers: { 'Content-Type': 'application/json' },
           });
     
@@ -22,5 +22,5 @@ $(function() {
           }
         }
       };
-      $( "#create_new_post-form" ).on( "submit", create_new_postFormHandler)
+      $( "#commenting-form" ).on( "submit", commentingFormHandler)
     });

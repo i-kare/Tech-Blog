@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { Post, User, Comment } = require('../../models');
+const { Post, User } = require('../../models');//homeroutes is initializs the 'post'
 const withAuth = require('../../utils/auth');
 const sequelize = require('../../config/connections');
-//const dayjs = require('dayjs');
+const dayjs = require('dayjs');
 
 //Step 1) Get a individual user and their respecective post(s). 1 to Many.
 router.get('/', withAuth, async (req, res) => {  //this is the initial page that loads. This homeroute is looking for authentication
@@ -37,7 +37,7 @@ router.get('/', withAuth, async (req, res) => {  //this is the initial page that
 const posts = postData.map((post) => post.get({ plain: true }));  //were serializing 'post' data 
 const user = userData.get({ plain: true }); //// We use .get({ plain: true }) on the object to serialize it so that it only includes the data that we need.  
 ///calling get fxn on 'userData'. calling the get fxn on 'user Data' will allow us to serialize the data. 
-     res.render('All_posts_per_user', { // when were rending were passing the list of 'posts' to our 'All_posts_per_user' page handlebar
+     res.render('all-posts-per-user', { // when were rending were passing the list of 'posts' to our 'All_posts_per_user' page handlebar
                               //In other words: the 'All_posts_per_user' template (i.e handlabar) is rendered, then the listed is passed into the template
           posts,
        ...user,
@@ -65,7 +65,7 @@ router.get('/post/:id', withAuth, async (req, res) => { //getting post by id and
        ],
      });
      const post = postData.get({ plain: true }); //Calling the GET fxn to get the data back then serialize the information about the data.  We use .get({ plain: true }) on the object to serialize it so that it only includes the data that we need. 
-     res.render('each_post_per_user', {//Sending the 'post' information to our handlebar i.e rendering to our 'each_post_per_user' handlebar
+     res.render('each-post-per-user', {//Sending the 'post' information to our handlebar i.e rendering to our 'each_post_per_user' handlebar
        ...post,
        logged_in: req.session.logged_in,
      });
@@ -81,7 +81,7 @@ router.get('/login', (req, res) => {
      res.redirect('/dashboard');
      return;
    }
-   res.render('login'); //TO DO: need login handlebard
+   res.render('login'); 
 });
 router.get('/signup', (req, res) => {
        // If the user is already logged in, redirect the request to another route
@@ -93,11 +93,11 @@ router.get('/signup', (req, res) => {
        res.render('signup'); //TO DO: need signup handlebar (Note: i'm joining this with login, so maybe change to /login) 
     });
 //Render the profile
-router.get('/profile', withAuth, async (req, res) => {
-   try {
-    res.redirect('/profile'); //TO DO: need profile handlebar
-   } catch (err) {
-     res.status(500).json(err);
-   }
-});
+//router.get('/profile', withAuth, async (req, res) => {
+   //try {
+    //res.redirect('/profile'); //TO DO: need profile handlebar
+  // } catch (err) {
+  //   res.status(500).json(err);
+   //}
+//});
 module.exports = router;

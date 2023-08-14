@@ -19,7 +19,7 @@ router.get('/', withAuth, async (req, res) => { //this is the initial dashboard 
           });    
      const posts = postData.map((post) => post.get({ plain: true }));  //were serializing 'post' data 
      
-     res.render('All_posts_in_general', { // when were rending were passing the list of 'posts' to our 'All_posts_in_general' page handlebar
+     res.render('all-posts-in_general', { // when were rending were passing the list of 'posts' to our 'All_posts_in_general' page handlebar
         //In other words: the 'All_posts_in_general' template (i.e handlabar) is rendered, then the listed is passed into the template
         posts,
         logged_in: true,
@@ -31,8 +31,8 @@ res.render('login');
 });
    
 //Step 2) When the user wants to create a post, render said new post
-router.get('/create_new_post', withAuth, async (req, res) =>{
-    res.render('create_post') //*TO DO: do I need to render a new layout? 
+router.get('/create-new-post', withAuth, async (req, res) =>{
+    res.render('create-post') //*TO DO: do I need to render a new layout? 
 })
 
 
@@ -46,7 +46,7 @@ router.get ('/edit/:id'), withAuth , async (req, res) => { //Getting an 'edit' b
     
             const post =postData.get({plain:true});
 
-        res.render('edit_post_page', {post});
+        res.render('edit-post-page', {post});
     } catch (err) { //if there's an error then 500 will be returned to users
         res.status(500).json(err);
       }
