@@ -380,6 +380,10 @@ width:95%
     margin: 0 0 6px;
   }
 
+  .text-uppercase{
+    text-transform: uppercase;
+  }
+
   .li-inline{
     display: inline;
   }
@@ -423,4 +427,9 @@ display: inline-block;
       background-color: var(--dark);
     }
 
-    
+    .min-100-vh{
+      min-height:100vh;
+    }
+    .min-100-vw{
+      min-width:100vw;
+    }
