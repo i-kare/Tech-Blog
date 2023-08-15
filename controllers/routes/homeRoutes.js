@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post, User } = require('../../models');//homeroutes is initializs the 'post'
 const withAuth = require('../../utils/auth');
-const sequelize = require('../../config/connections');
+const sequelize = require('../../config/connections.js');
 const dayjs = require('dayjs');
 
 //Step 1) Get a individual user and their respecective post(s). 1 to Many.
