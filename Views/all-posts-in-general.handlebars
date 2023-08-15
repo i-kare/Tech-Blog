@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-auto">
+        <h2>{{user.username}}!</h2>
+    </div>
+</div>
+{{#if posts.lenth}}
+    <div class="card flex-column">
+        {{#each posts as |post|}}
+        {{/each}}
+    </div>
+{{/if}}

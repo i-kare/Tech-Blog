@@ -1,0 +1,30 @@
+<div class ="card" id="individualpostPage">
+    <div class="card-header flex-row justify-space-between">
+        <h2><a href="../models/Post.js/{{post.id}}"> <div class="col-md-8">{{post.postTitle}}</div> </a>
+        </h2>
+        <div class="col-3">Posted by{{post.user.username}} on {{format_date post.dateCreated}}</div>
+    </div>
+    <p class="individual-post-card-body"{{post.postContent}}</p>  
+</div>
+ <input type="hidden" name="post-id" value="{{post.id}}"/>
+
+<div class ="card">
+    <section class = "individual-card-body" id="bodyofSignupPage">
+        <div class="row">
+            <div class="column-1">
+                <div class="row">
+                     <div class="text-center">
+                        <div class="card-header"></div>
+                        <form class="card-body" id="commenting-form">
+                             <p class="form-group">Comment:</p>
+                             <textarea class="form-textarea form-input" type="text" id="comment-input"></textarea>
+                             <button class="btn btn-primary btn-lg" id="createButton" type="submit">Submit:</button>
+                        </form>
+                        {{>comment post.comment}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

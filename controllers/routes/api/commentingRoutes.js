@@ -20,8 +20,8 @@ router.get('/', withAuth, async (req, res) => {  //this is the initial comment t
 
         });
         const comments = commentData.map((comment) => comment.get({ plain: true }));  //were serializing 'comment' data 
-res.render('individual-comment',{ //The res.render() function is used to render a view and sends the rendered HTML string to the client. 
-    comments, //these are passed into the 'individual-comment' handlebar
+res.render('each-post-per-user',{ //The res.render() function is used to render a view and sends the rendered HTML string to the client. 
+    comments, //these are passed into the 'each-post-per-user' handlebar
 ...user,
 logged_in:true,
 });

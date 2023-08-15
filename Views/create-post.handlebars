@@ -1,0 +1,28 @@
+//rendered in dashboard handlebar. might not need render create-posts in dashboard routes or adjust it to render in dashboard handlebars
+
+
+<section class="create-new-post-card" id="dashboardPage" style="display: none;"> 
+        <section class = "create-new-post-card-body" id="bodyofdashboardPage">
+            <div class="row">
+              <div class="column-1">
+                    <div class="row">
+                        <div class="text-center">
+                         <h2 class="createnewpostTitle" id="createnewpostTitle">Create New Post</h2>
+                            <form class="card-body" id="post-form">
+                                <input type="hidden" name="post-id" value="{{post.id}}"/>
+                                <div class="form-group"> 
+                                    <label for="title">Title</label>
+                                    <input class="form-input" type="text" id="title-input" />
+                                </div>
+                                <div class="form-group"> 
+                                    <label for="content">Content</label>
+                                    <textarea class="form-textarea form-input" type="text" id="content-input" data-number="8"/></textarea>
+                                </div>
+                                    <button class="btn btn-primary btn-lg" id="createButton" type="submit">Create</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+ </section>

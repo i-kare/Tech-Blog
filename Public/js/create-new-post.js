@@ -22,5 +22,5 @@ $(function() {
           }
         }
       };
-      $( "#commenting-form" ).on( "submit", commentingFormHandler)
+      $("#commenting-form").on("submit", commentingFormHandler)
     });

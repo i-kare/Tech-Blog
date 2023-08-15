@@ -1,43 +1,57 @@
+<!DOCTYPE html>
 <html lang='en'>
 <head>
     <meta charset = "UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Home | Tech Blog</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/jass.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
-<div class='flex-column justify-space-around' id="everything">
-<header class ='display-flex justify-space-between align-center p-2' id="navigationLinks">
-    <h1>
-        <nav>
+<body class ="flex-column min-100-vh" id="navigationLinks">
+
+   <nav>
+      <ul>
+        <li class="navigation-links">
             <a href=#Homepage>Home</a>
-            <a href=#Dashboard>Dashboard</a>
-            <!-- Conditionally render login or logout links -->
-          {{#if logged_in}}
-            <button class='no-button' id='logout'>logout</button>
-          {{else}}
-            <a href='/login'>login</a>
-          {{/if}}
-        </nav>
+        </li>
+
+        <li class="navigation-links">
+           <a href=#Dashboard>Dashboard</a>
+        </li>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+          <li class="navigation-links"> 
+            <button class="no-button" id='logout'>logout</button>
+          </li>
+       
+        {{else}} <!-- Render script for logged out users only -->
+          <li class="navigation-links"> 
+            <a href='../.././Public/js/login.js'>login</a>
+          </li>
+        {{/if}}
+  
+      </ul>
+    </nav>
+  
+  
+  <header class = "changingTitle"> 
+    <h1 class = "regular-title">
+      The Tech Blog
     </h1>
-</header>
+  </header>
 
-
-<!-- <section class="sub-header" id="websiteTitle">
-    <h2>The Tech Blog</h2>
-</section>-->
-
-
-<main class='container container-fluid mt-5'>
-<!-- Render the sub layout -->
-{{{ body }}}
-</main>
- </div>
- <!-- Render script for logged in users only -->
-    {{#if logged_in}}
-      <script src='/js/logout.js'></script>
-    {{/if}}
+  <main class="col-auto">
+    <!-- Render the sub layout -->
+    {{{ body }}}
+  </main>
+  <footer>
+  </footer>
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+     <script src='../.././Public/js/logout.js'></script>
+  {{/if}}
 </body>
 
 </html>
