@@ -51,4 +51,5 @@ router.get ('/edit/:id'), withAuth , async (req, res) => { //Getting an 'edit' b
         res.status(500).json(err);
       }
    };
+
    module.exports = router;

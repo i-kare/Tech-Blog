@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const { Post } = require('../../../models');
 const withAuth = require('../../../utils/auth');
-
-            const dayjs = require('dayjs');
+const dayjs = require('dayjs');
 
 
 //CRUD!!!!!! for Posts
