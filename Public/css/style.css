@@ -1,157 +1,61 @@
+:root{
+  --primary: #a7ccb4;
+  --secondary: #c0dbd3;
+  --tertiary: #676f6f;
+  --light-dark: #5f5856;
+  --dark: #0b0908;
+  --border-radius: 0.5rem;
+}
 
+*{box-sizing:border-box;}
   
   body {
-    font-family: Arial;
+    background-color: var(--primary);
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    justify-content: flex-start;
-    background-color: var(--quatrinary);
+    padding: 0;
+    font-family: "IBM Plex Sans", sans-serif;
+    color: var(--dark);
+    line-height: 2;
+    font-size: 15px;
   }
   
   header {
-    padding: 40px;
-    text-align: center;
-    background: var(--primary);
-    color: var(--secondary);
-    border-bottom-style: solid;
+   margin: top 60px;
+    font-weight:600;
+    color:var(--dark);
+    margin:0%;
+    line-height: 1.5;
   }
+  h2{
+    color:#a7ccb4
+  }
+
   
   main {
-    display: flex;
-    flex-wrap: wrap;
-    flex-grow: 1;
+margin:17px auto;
+width:95%
   }
   
-  aside {
-    flex: 0;
-    background-color: var(--tertiary);
-    padding: 80px;
-    text-align: left;
-    color: var(--light);
-  }
-  
-  nav {
-    display: flex;
-    background-color: var(--secondary);
-  }
-  
-  .menu-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 75%;
-    min-height: 100%;
-    margin: 0px auto;
-    border: 3px solid var(--primary);
-    border-radius: var(--border-radius);
-    border-style: solid;
-    border-width: medium;
-    background-color: var(--light);
-    color: var(--dark);
-    padding: 50px;
-    background-color: #ebebeb;
-  }
-  
-  .add-dish-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 35%;
-    min-height: 100%;
-    min-width: 35%;
-    margin: 5px auto;
-    border: 3px solid var(--primary);
-    border-radius: var(--border-radius);
-    border-style: solid;
-    border-width: medium;
-    background-color: var(--light);
-    color: var(--dark);
-    padding: 50px;
-    text-align: center;
-    background-color: var(--tertiary);
-  }
-  
-  .edit-dish-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 35%;
-    min-height: 100%;
-    min-width: 35%;
-    margin: 5px auto;
-    border: 3px solid var(--primary);
-    border-radius: var(--border-radius);
-    border-style: solid;
-    border-width: medium;
-    background-color: var(--light);
-    color: var(--dark);
-    padding: 50px;
-    text-align: center;
-    background-color: var(--tertiary);
-  }
-  
+  p{
+    font-size: 1.25rem;
+  }  
   /* CARDS */
-  .dish-card {
-    margin: 20px;
-    flex: 0 1 300px;
-    padding: 5px;
-    width: 35%;
-    min-height: 100%;
-    min-width: 35%;
-    border: 3px solid var(--primary);
-    border-radius: var(--border-radius);
-    border-style: solid;
-    border-width: medium;
-    background-color: var(--light);
-    color: var(--dark);
+  .card {
+    border:3px #0b0908;
+    border-radius:var(--border-radius);
+    margin: 0 0 19px 0;
   }
-  
-  .menu-card {
-    margin: 50px;
-    flex: 0 1 300px;
-    padding: 5px;
-    border: 3px solid var(--dark);
-    border-radius: var(--border-radius);
-    border-style: groove;
-    border-width: thick;
-    background-color: var(--light);
-    color: var(--dark);
-  }
-  
-  .card-header {
-    color: var(--light);
-    margin: 0;
-    background-color: var(--secondary);
-    padding: 0.625rem;
-    border: 3px solid var(--primary);
-    border-radius: var(--border-radius);
-    border-style: solid;
-    border-width: medium;
-  }
-
-  .has-nuts {
-    color: var(--error)
-  }
-
-  .dish-card-header {
+  .cardy-body{
+    padding: 2%;
+    color:var(--primary);
+    background-color: var(--dark);
+    margin:11px;
     font-size: 1.5rem;
-    color: var(--tertiary);
-    margin: 0;
-    background-color: var(--light);
-    padding: 0.625rem;
-    border-bottom-style: solid;
   }
-  
-  .card-body {
-    padding: 2.5%;
-    font-size: 1.4rem;
-    text-align: center;
-  }
-  
-  /* LAYOUT */
-  .container {
-    display: flex;
-    flex-flow: column wrap;
-    align-content: flex-start;
-    align-items: center;
+  .card-header{
+    padding:1%;
+    border-radius:calc(0.15rem-1px) calc(0.15rem-1px) 0 0;
+    color:var(--primary);
+    background-color:var(--dark);
   }
   
