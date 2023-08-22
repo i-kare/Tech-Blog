@@ -10,7 +10,7 @@
 </head>
 
 <body class ="flex-column min-100-vh" id="navigationLinks">
-
+<section class="background"> 
    <nav>
       <ul>
         <li class="navigation-links">
@@ -23,17 +23,18 @@
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
           <li class="navigation-links"> 
-            <button class="no-button" id='logout'>logout</button>
+            <button class="no-button" id='logout'>Logout</button>
           </li>
        
         {{else}} <!-- Render script for logged out users only -->
           <li class="navigation-links"> 
-            <a href='../.././Public/js/login.js'>login</a>
+            <a href='../../Public/js/login.js'>Login</a>
           </li>
         {{/if}}
   
       </ul>
     </nav>
+
   
   
   <header class = "changingTitle"> 
@@ -41,7 +42,7 @@
       The Tech Blog
     </h1>
   </header>
-
+  </section>
   <main class="col-auto">
     <!-- Render the sub layout -->
     {{{ body }}}
