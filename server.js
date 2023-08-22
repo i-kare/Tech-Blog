@@ -10,13 +10,14 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+app.listen(process.env.PORT || 3001, () => { console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env); }); 
 
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
 
  const sess = {
    secret: 'Tech blog secret',
-   cookie: {},
+   cookie: { maxAge:36000},
    resave: false,
    saveUninitialized: true,
    store: new SequelizeStore({
@@ -31,7 +32,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
