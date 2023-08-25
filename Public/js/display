@@ -1,0 +1,37 @@
+
+$(function () {
+  // This will hide the login page and show the signup page instead 
+  $("#signupInstead").click((e) =>{ //note: class has . and id has # 
+    e.preventDefault();
+    if (e.target.id==="signupInstead") {
+      $("#loginPage").hide();
+      $("#signupPage").show();
+  // This will hide the signup page and show the login page instead 
+    } else { (e.target.id==="loginInstead")
+        $("#loginPage").show();
+        $("#signupPage").hide();
+    }
+    
+  })
+});
+
+
+$(function () {
+
+  // This will hide the login page and show the signup page instead 
+  $("#signupInstead").click((e) =>{ //note: class has . and id has # 
+    e.preventDefault();
+    if (e.target.id==="signupInstead") {
+      $("#loginPage").hide();
+      $("#signupPage").show();
+  // This will hide the signup page and show the login page instead 
+    } else { (e.target.id==="loginInstead")
+        $("#loginPage").show();
+        $("#signupPage").hide();
+    }
+    
+  })
+  document.querySelector(".signupInstead-form").addEventListener("click",signupFormHandler); 
+  document.querySelector(".loginInstead-form").addEventListener("click",loginFormHandler);   
+
+});

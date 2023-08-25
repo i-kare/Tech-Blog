@@ -1,10 +1,11 @@
-$(function() {
+
+
     const loginFormHandler = async (event) => {
       event.preventDefault();
   
       // Collect values from the login form
-      const username = document.querySelector('#usename-login').value.trim();       
-      const password = document.querySelector('#password-login').value.trim();
+      const username = document.querySelector('#usename-login');     
+      const password = document.querySelector('#password-login');
   
       if (username && password) {         
         // Send a POST request to the API endpoint
@@ -26,8 +27,8 @@ $(function() {
     const signupFormHandler = async (event) => {
       event.preventDefault();
   
-      const username = document.querySelector('#username-signup').value.trim();         
-      const password = document.querySelector('#password-signup').value.trim();
+      const username = document.querySelector('#username-signup');      
+      const password = document.querySelector('#password-signup');
   
       if (username && password) {                                  
         const response = await fetch('/api/users', {
@@ -44,15 +45,11 @@ $(function() {
       }
     };
     
-    const showSignupForm = async(e) =>{
-      e.preventDefault();
-  
-      $(".signupButton").hide();
-      $(".signupPage").show();
-    }
+document.querySelector( ".login-form" ).addEventListener( "submit", loginFormHandler);
 
-    $( ".login-form" ).on( "submit", loginFormHandler)
-    $( ".signup-form" ).on( "submit", signupFormHandler)
-    $(".signupButton").click(showSignupForm)
-  });
-  
+   
+
+
+
+
+
