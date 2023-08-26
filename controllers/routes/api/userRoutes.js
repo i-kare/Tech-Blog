@@ -1,7 +1,8 @@
-const router = require('express').Router();             
-const { User } = require('../../../models');
+const router = require('express').Router();           
+const { User } = require('../../../models'); //homeroutes is initializs the 'post'
 
-//Step1) NewUser portion
+
+//Step1) NewUser portion/sign up 
 router.post('/', async (req, res) => { 
   try {
     const newuserData = await User.create({

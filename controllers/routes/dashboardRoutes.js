@@ -19,7 +19,7 @@ router.get('/', withAuth, async (req, res) => { //this is the initial dashboard 
           });    
      const posts = postData.map((post) => post.get({ plain: true }));  //were serializing 'post' data 
      
-     res.render('all-posts-in_general', { // when were rending were passing the list of 'posts' to our 'All_posts_in_general' page handlebar
+     res.render('all-posts-in-general', { // when were rending were passing the list of 'posts' to our 'All_posts_in_general' page handlebar
         //In other words: the 'All_posts_in_general' template (i.e handlabar) is rendered, then the listed is passed into the template
         posts,
         logged_in: true,

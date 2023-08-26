@@ -4,37 +4,33 @@
     <meta charset = "UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>Home | Tech Blog</title>
-    
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/jass.css">
     <link rel="stylesheet" href="/css/style.css">
-
-
 </head>
 
 <body class ="flex-column min-100-vh" id="navigationLinks">
-<section class="background"> 
+<div class="background"> 
 
   
    <nav>
       <ul>
         <li class="navigation-links"> 
-           <a href="#Home">Home</a>
+           <a href="/">Home</a>
         </li>
 
         <li class="navigation-links">
-           <a href="#Dashboard">Dashboard</a>
+           <a href="/dashboard">Dashboard</a>
         </li>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
           <li class="navigation-links"> 
-            <button class="no-button" id='logout'>
-              <a href="#Logout">Logout</button</a></button>
+            <button class="no-button" id="logout">
+              Logout</button>
           </li>
        
         {{else}} <!-- Render script for logged out users only -->
           <li class="navigation-links"> 
-            <a href="#Login">Login</a>
+            <a href="/login">Login</a>
           </li>
         {{/if}}
   
@@ -48,25 +44,23 @@
      <a href="#Main">The Tech Blog</a>
     </h1>
   </header>
-  </section>
+  </div>
 
   <main class="col-auto">
     <!-- Render the sub layout -->
     {{{ body }}}
   </main>
-
-
   <footer>
   </footer>
 
-
-</body>
  <!-- Render script for logged in users only -->
 {{#if logged_in}}
-     <script src='/js/logout.js'></script>
+     <script src="/Public/js/logout.js"></script>
   {{/if}}
 
+</body>
 </html>
+
 
 
 
